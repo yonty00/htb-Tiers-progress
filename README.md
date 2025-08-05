@@ -1,5 +1,13 @@
-# htb-Tiers-progress
+# htb-tiers-progress
 Aspiring cybersecurity professional, currently transitioning careers into the cyber world. This is my log for Hack The Box Tiers 0,1 and 2 as I move forward to my main goal. Cybersecurity Role! Let's connect and share knowledge
+
+This repository documents my hands-on journey learning cybersecurity through Hack The Box (HTB).  
+I track my progress across Tier 0, Tier 1, Tier 2 challenges, as I work toward Certs like CompTIA Security+, and secure a remote cybersecurity role.
+
+## Included in this Repo:
+- `/Tier-0`, `/Tier-1`, `/Tier-2` – folders for each HTB tier
+- Individual challenge log markdown files with methodology and reflections
+- `PROGRESS.md` — monthly tracker of skills, achievements, and goals
 
 # Cybersecurity Journey 🚀
 
