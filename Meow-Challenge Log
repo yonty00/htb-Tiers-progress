@@ -1,0 +1,40 @@
+# Meow
+*Date Completed: 2025-07-03*
+
+## Overview
+- **Category:** Parrot Linux, Telnet Enumeration, Exploitation 
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap / service detection flag [-sV] - nmap -sV [target IP]
+- Telnet
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping the Target to determine connection, packets reach destination and check if the connection is formed and stable. 
+   - Used nmap with detection flag -sV to scan ports and to determine the name and description of the identified services.  
+	- For more info on -sV Service and Version Detection (https://nmap.org/book/man-version-detection.html) 
+   - After analyzing open ports and discovering Telnet service, I proceeded to connect via Telnet to target machine.
+   - Telnet is an old service remote management for other hosts on the network. 
+2. **Exploitation:**  
+   - Telnet misconfiguration. Used default credentials for access. 
+3. **Privilege Escalation:**  
+   - System access and navigate through the system to show the flag.
+
+## What I Learned
+- Telnet is an old service remote management that should be configured properly if used.
+- Users must set up a strong username and password when using Telnet as default users’ names and passwords can be found on the web.
+- Accessing through telnet can be dangerous as you can navigate throughout the folder directory and exploit it even more. 
+
+## Challenges & Solutions
+- **Challenge:** Find the flag by using telnet in target machine.
+- **Solution:** Used default username and password for access, then navigate through directory to find flag. 
+
+## References
+- [HTB Legal Rules] https://resources.hackthebox.com/hubfs/Legal/AUP.pdf 
+- Nmap: https://nmap.org/book/man-version-detection.html 
+- Telnet: https://en.wikipedia.org/wiki/Telnet 
+---
+
+*No spoilers—just my process and key takeaways.*
