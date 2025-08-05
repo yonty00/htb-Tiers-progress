@@ -1,0 +1,48 @@
+#Fawn Machine
+*Date Completed: 2025-07-05*
+
+## Overview
+- **Category:** Parrot Linux, ftp protocol, Exploitation
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege)
+- FTP commands > ftp [target ip] > ftp help
+-Linux command > get filename.txt > cat filename.txt
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target IP to detect connection and make sure it is established.
+   - Used nmap for port scanning, but with sudo privileges, also add the -sV flag for version detection.  
+	Sudo nmap -sV [target ip]
+
+     - Dectected that ftp protocol runs in one of the open ports, I proceeded to exploit. More info about FTP (https://en.wikipedia.org/wiki/File_Transfer_Protocol) 
+
+2. **Exploitation:**  
+   - Discovered that FTP protocol runs on port #
+   - A misconfiguration on the ftp server can let an “anonymous” user access the service 
+   - Used the proper username plus credentials for anonymous to get access.
+   - Access to service was granted using anonymous credentials.
+3. **Privilege Escalation:**  
+   - When inside the ftp server. I use the ls command to discover files within the server. 
+   - I was able to find the flag.txt file, then I proceed to download the file to my machine using the “get” command.
+   - When file was downloaded, quite the ftp connection then using the “cat” command I was able to read the flag.txt file
+
+## What I Learned
+   - FTP can be used to transfer log files from one network device to another or a log collection server.
+   - FTP servers can give access to anyone if they are misconfigured.
+   - Files can be intercepted with what is known as Man-in-the-Middle Attack MitM)
+   - SFTP is more secure as it runs SSH and secured against any interception.
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, then after knowing the open port for ftp, I proceeded to access the target machine with “anonymous” credential.
+- **Solution:** Anonymous credentials gave access to ftp servers, I was able to download the flag to my machine and cat the file.
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- FTP info (https://en.wikipedia.org/wiki/File_Transfer_Protocol) 
+
+---
+
+*No spoilers—just my process and key takeaways.*
