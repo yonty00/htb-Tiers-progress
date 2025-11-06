@@ -1,0 +1,47 @@
+#Dancing
+*Date Completed: 2025-07-20*
+
+## Overview
+- **Category:** Parrot Linux, SMB, Exploitation
+- **Tier:** 0
+
+## Tools Used
+- Ping IP
+- Nmap (sudo privilege) w/ flag -sV = Version
+- Smbclient
+
+## What I Did / Approach
+1. **Enumeration:**  
+   - Ping Target IP to detect connection and make sure it is established.
+   - Used nmap for port scanning, but with sudo privileges, also add the -sV flag for version detection.  
+	Sudo nmap -sV [target ip]
+
+     - Detected port 445 running TCP Microsoft-ds
+
+2. **Exploitation:**  
+   - Discovered that smb protocol runs on port 445
+   - Attempted to login using “Guest” or “Anonymous” 
+   - Ran smb command with target’s IP  - smbclient -L {target IP}
+   - Access a table with share name users, type and commands. 
+3. **Privilege Escalation:**  
+   -one of the shareuser don’t require password as is misconfigured. 
+   -  When logged in, “help” will show you all command that can be used within smb.
+   - The misconfigured user has two directories with txt files.
+   - Downloaded all txt files (including flag.txt) with “get” command to my local machine. 
+   - Quit smbclient and I checked the files in the download folder.
+   - Used the “cat” command to see what was inside each file. Found the flag!
+
+## What I Learned
+   - SMB is a protocol that allows you to share files, printers, and serial ports between endpoints on a network. 
+   - If a share user is misconfigured, the attacker can have access to the users’ account without a password and dig around for files or info.
+   - Nmap tool is very useful to discover open ports in target’s machine. 
+
+## Challenges & Solutions
+- **Challenge:** Initially ran nmap for port scanning, then after knowing the open port for SMB, I proceeded to access the target machine with smbclient command and display the share users.
+- **Solution:** One of the share users is misconfigured and does not require credentials.
+After entering the user’s account, I was able to look around and download all the txt files to my local machine, then user “cat” command to see the flag.txt file.
+
+## References
+- [HTB Legal Rules]( https://resources.hackthebox.com/hubfs/Legal/AUP.pdf )
+- SMB client https://en.wikipedia.org/wiki/Server_Message_Block
+*No spoilers—just my process and key takeaways.*
